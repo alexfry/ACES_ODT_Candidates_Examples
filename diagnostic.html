@@ -32,6 +32,12 @@
         h1  {
         padding: 10px;}
 
+        .block{
+            padding: 20px;
+            width:512px;
+            text-align:left;
+        }
+
         .grid-container {
         display: grid;
         grid-template-columns: auto auto;
@@ -43,7 +49,7 @@
     }
     </style>
     <!-- Title section -->
-    <div class="title" style="width:512px;text-align:left">
+    <div class="block">
         <h1>Avif HDR diagnostic page</h1>
         This page is designed to help you diagnose if your browser and display are displaying HDR values properly.<br>
         <br>
@@ -51,7 +57,7 @@
         <br>    
         The image on the right marked "PQ 100nits" is a Rec.2100 (Rec2020, ST.2084/PQ) encoded Avif file<br>
         <br>
-        Ideally, the two images should look the same. If you're seeing a log like desaturated image on the right under Windows, you may need to set "Use HDR" to On under the Display settings. If the white level of the left and right sections do not match, you may need to adjust the "HDR/SDR brightness balance" under Windows HD Color settings. In my experince it needs to be set to 0<br>
+        Ideally, the two images should look the same. If you're seeing a log like desaturated image on the right under Windows, you may need to set "Use HDR" to On under the Display settings. If the white level of the left and right sections do not match, you may need to adjust the "HDR/SDR brightness balance" under Windows HD Color settings. In my experince it needs to be set to 0.<br>
         <br>
         <br>
     </div>
@@ -64,15 +70,27 @@
         </div>
 
     </div>
-    <div style="width:512px">
+    <div class="block">
         Swipe between the two states here. The outer section of colour boxes should match, as should the SDR white.
+        <br>
         <br>
         <div  class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="imagesDiagnostic/SDR_1.png"  loading="lazy" data-label="SDR"  />
             <img src="imagesDiagnostic/PQ100nits.avif"  loading="lazy" data-label="HDR"  />
         </div>
     </div>
-
+    <div class="block" >
+    This image ramps from 10 nits up to 1000nit in 10nit steps. The image is encoded in Rec.2100 (Rec2020, ST.2084/PQ)
+    </div>
+    <div >
+        <img src="imagesDiagnostic/PQ_10_to_1000nits.avif"    loading="lazy"  />
+    </div>
+    <div class="block" >
+    This second image ramps from 100nits all the way up to the PQ limit of 10000nits. It can be useful to see where things are being clipped or tone mapped on different displays. As well as seeing how the brightness slider on an XDR display scales things when in the "Pro Display XDR (1600nits)" variable brightness mode.
+    </div>
+    <div >
+        <img src="imagesDiagnostic/PQ_100_to_10000nits.avif"    loading="lazy"  />
+    </div>
 
     </div>
     <script
