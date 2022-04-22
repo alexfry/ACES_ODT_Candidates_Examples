@@ -66,7 +66,12 @@
             <img src="imagesDiagnostic/SDR_1.png"    loading="lazy"  />
         </div>
         <div>
-            <img src="imagesDiagnostic/PQ100nits.avif"    loading="lazy"  />
+            <picture>
+                <!--This is the optional AVIF image-->
+                <source type="image/avif" srcset="imagesDiagnostic/PQ100nits.avif">
+                <!--This is the fallback JPEG image-->
+                <img alt="Did that not work?" src="imagesDiagnostic/notSupported.png">
+            </picture>       
         </div>
 
     </div>

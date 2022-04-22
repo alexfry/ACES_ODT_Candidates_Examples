@@ -2,7 +2,7 @@
 version 13.0 v3
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="25" w="3008" h="1562" maximized="1" screen="0">
+    <window x="0" y="25" w="3008" h="1562" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
@@ -37195,13 +37195,13 @@ Colorspace {
  colorspace_out sRGB
  primary_out DCI-P3
  name Colorspace24
- xpos -2374
- ypos 579
+ xpos -2304
+ ypos 599
 }
 Clamp {
  name Clamp1
- xpos -2374
- ypos 603
+ xpos -2304
+ ypos 623
 }
 push $N47c66800
 Text2 {
@@ -37314,83 +37314,6 @@ Transform {
  ypos 506
 }
 set N47be3800 [stack 0]
-Constant {
- inputs 0
- channels rgb
- color 1
- format "512 512 0 0 512 512 1 square_512"
- name Constant3
- xpos -1997
- ypos 285
-}
-Grade {
- inputs 1+1
- white 10
- maskChannelMask rgba.red
- name Grade3
- xpos -1993
- ypos 541
-}
-Merge2 {
- inputs 2
- name Merge10
- xpos -1997
- ypos 621
-}
-Text2 {
- font_size_toolbar 100
- font_width_toolbar 100
- font_height_toolbar 100
- message "SDR 1.0"
- old_message {{83 68 82 32 49 46 48}
-   }
- box {0 0 512 512}
- xjustify center
- yjustify center
- transforms {{0 2}
-   }
- font {{ Helvetica : Regular : Helvetica.ttc : 0 }}
- global_font_scale 0.555
- center {256 256}
- cursor_initialised true
- autofit_bbox false
- initial_cursor_position {{0 512}
-   }
- group_animations {{0} imported: 0 selected: items: "root transform/"}
- animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
-   }
- color 0.8
- name Text16
- xpos -1997
- ypos 645
-}
-Colorspace {
- primary_in Rec.2020
- colorspace_out sRGB
- name Colorspace16
- xpos -1997
- ypos 669
-}
-Clamp {
- name Clamp2
- xpos -1997
- ypos 693
-}
-Write {
- file /Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/SDR_1.png
- colorspace "Utility - sRGB - Texture"
- raw true
- file_type png
- checkHashOnRead false
- version 8
- in_colorspace scene_linear
- out_colorspace scene_linear
- name Write6
- xpos -1997
- ypos 737
-}
-push $N47c64c00
-push $N47be3800
 push $N47c64800
 Text2 {
  font_size_toolbar 100
@@ -37630,6 +37553,130 @@ Colorspace {
  xpos -3102
  ypos 687
 }
+push $N47f86800
+Retime {
+ input.first 0
+ input.first_lock true
+ input.last 10000
+ input.last_lock true
+ output.first 0
+ output.last 1000
+ speed 10
+ filter none
+ time ""
+ name Retime3
+ xpos -2858
+ ypos 486
+}
+ContactSheet {
+ width {{width*columns}}
+ height {{height*rows}}
+ rows 10
+ columns 10
+ splitinputs true
+ startframe 1
+ endframe 121
+ name ContactSheet7
+ xpos -2858
+ ypos 550
+}
+set Nade94c00 [stack 0]
+Colorspace {
+ colorspace_out sRGB
+ name Colorspace29
+ xpos -2734
+ ypos 683
+}
+push $Nade94c00
+Multiply {
+ value 100
+ name Multiply6
+ xpos -2858
+ ypos 651
+}
+Colorspace {
+ primary_in Rec.2020
+ colorspace_out st2084
+ primary_out Rec.2020
+ name Colorspace28
+ xpos -2858
+ ypos 683
+}
+Reformat {
+ type "to box"
+ box_width 1024
+ name Reformat7
+ xpos -2858
+ ypos 707
+}
+Write {
+ file /tmp/PQ_100_to_10000nits.png
+ colorspace "Candidate C rev008 - Rec.709"
+ raw true
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ version 45
+ afterFrameRender "\nimport sys\nfrom subprocess import Popen\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  -l --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\nproc = Popen(\[commandString], shell=True,\n             stdin=None, stdout=None, stderr=None, close_fds=True)\n"
+ name Write8
+ xpos -2858
+ ypos 777
+ addUserKnob {20 User}
+ addUserKnob {2 destinationPath}
+ destinationPath "/Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/\[python nuke.thisNode().knob('file').evaluate().split('/').pop(-1).replace('.png','.avif')]"
+ addUserKnob {3 cicp_P}
+ cicp_P 9
+ addUserKnob {3 cicp_T}
+ cicp_T 16
+ addUserKnob {3 cicp_M}
+ cicp_M 9
+ addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
+}
+push $N47eff400
+Multiply {
+ value 100
+ name Multiply5
+ xpos -2978
+ ypos 650
+}
+Colorspace {
+ primary_in Rec.2020
+ colorspace_out st2084
+ primary_out Rec.2020
+ name Colorspace26
+ xpos -2978
+ ypos 682
+}
+Reformat {
+ type "to box"
+ box_width 1024
+ name Reformat5
+ xpos -2978
+ ypos 706
+}
+Write {
+ file /tmp/PQ_10_to_1000nits.png
+ colorspace "Candidate C rev008 - Rec.709"
+ raw true
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ version 44
+ afterFrameRender "\nimport sys\nfrom subprocess import Popen\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  -l --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\nproc = Popen(\[commandString], shell=True,\n             stdin=None, stdout=None, stderr=None, close_fds=True)\n"
+ name Write7
+ xpos -2978
+ ypos 774
+ addUserKnob {20 User}
+ addUserKnob {2 destinationPath}
+ destinationPath "/Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/\[python nuke.thisNode().knob('file').evaluate().split('/').pop(-1).replace('.png','.avif')]"
+ addUserKnob {3 cicp_P}
+ cicp_P 9
+ addUserKnob {3 cicp_T}
+ cicp_T 16
+ addUserKnob {3 cicp_M}
+ cicp_M 9
+ addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
+}
 push $N449d5c00
 OCIOColorSpace {
  in_colorspace scene_linear
@@ -37722,39 +37769,73 @@ Write {
  addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
 }
 push $N47cf1000
-push $N47f86800
-Retime {
- input.first 0
- input.first_lock true
- input.last 10000
- input.last_lock true
- output.first 0
- output.last 1000
- speed 10
- filter none
- time ""
- name Retime3
- xpos -2858
- ypos 486
+Constant {
+ inputs 0
+ channels rgb
+ color 1
+ format "512 512 0 0 512 512 1 square_512"
+ name Constant9
+ xpos -2468
+ ypos 447
 }
-ContactSheet {
- width {{width*columns}}
- height {{height*rows}}
- rows 10
- columns 10
- splitinputs true
- startframe 1
- endframe 121
- name ContactSheet7
- xpos -2858
- ypos 550
+Grid {
+ opacity 0.575
+ number 2
+ size 45
+ color 0
+ name Grid1
+ xpos -2468
+ ypos 519
 }
-set Nade94c00 [stack 0]
-Colorspace {
- colorspace_out sRGB
- name Colorspace29
- xpos -2734
- ypos 683
+Transform {
+ rotate 45
+ scale 1.7
+ center {256 256}
+ name Transform10
+ xpos -2468
+ ypos 543
+}
+Text2 {
+ font_size_toolbar 280
+ font_width_toolbar 100
+ font_height_toolbar 100
+ message "AVIF\nnot\nSUPPORTED"
+ old_message {{65 86 73 70 10 110 111 116 10 83 85 80 80 79 82 84 69 68}
+   }
+ box {0 0 512 512}
+ xjustify center
+ yjustify center
+ transforms {{0 2}
+   }
+ font_size_values {{0 280 1 280 2 280 3 280 0 103 1 103 2 103 3 103}
+   }
+ font {{ Helvetica : Bold : Helvetica.ttc : 1 }}
+ global_font_scale 0.555
+ font_size 280
+ center {256 256}
+ cursor_initialised true
+ autofit_bbox false
+ initial_cursor_position {{0 512}
+   }
+ group_animations {{0} imported: 0 selected: items: "root transform/"}
+ animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+   }
+ color {0.8 0.156505 0.169813 0.8}
+ color_panelDropped true
+ name Text30
+ xpos -2468
+ ypos 567
+}
+Write {
+ file /Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/notSupported.png
+ colorspace "Utility - sRGB - Texture"
+ file_type png
+ checkHashOnRead false
+ version 10
+ name Write9
+ selected true
+ xpos -2468
+ ypos 615
 }
 Viewer {
  inputs 3
@@ -37768,94 +37849,80 @@ Viewer {
  xpos -2340
  ypos -76
 }
-push $Nade94c00
-Multiply {
- value 100
- name Multiply6
- xpos -2858
- ypos 651
+push $N47c64c00
+push $N47be3800
+Constant {
+ inputs 0
+ channels rgb
+ color 1
+ format "512 512 0 0 512 512 1 square_512"
+ name Constant3
+ xpos -1993
+ ypos 281
+}
+Grade {
+ inputs 1+1
+ white 10
+ maskChannelMask rgba.red
+ name Grade3
+ xpos -1993
+ ypos 541
+}
+Merge2 {
+ inputs 2
+ name Merge10
+ xpos -1997
+ ypos 621
+}
+Text2 {
+ font_size_toolbar 100
+ font_width_toolbar 100
+ font_height_toolbar 100
+ message "SDR 1.0"
+ old_message {{83 68 82 32 49 46 48}
+   }
+ box {0 0 512 512}
+ xjustify center
+ yjustify center
+ transforms {{0 2}
+   }
+ font {{ Helvetica : Regular : Helvetica.ttc : 0 }}
+ global_font_scale 0.555
+ center {256 256}
+ cursor_initialised true
+ autofit_bbox false
+ initial_cursor_position {{0 512}
+   }
+ group_animations {{0} imported: 0 selected: items: "root transform/"}
+ animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+   }
+ color 0.8
+ name Text16
+ xpos -1997
+ ypos 645
 }
 Colorspace {
  primary_in Rec.2020
- colorspace_out st2084
- primary_out Rec.2020
- name Colorspace28
- xpos -2858
- ypos 683
+ colorspace_out sRGB
+ name Colorspace16
+ xpos -1997
+ ypos 669
 }
-Reformat {
- type "to box"
- box_width 1024
- name Reformat7
- xpos -2858
- ypos 707
+Clamp {
+ name Clamp2
+ xpos -1997
+ ypos 693
 }
 Write {
- file /tmp/PQ_100_to_10000nits.png
- colorspace "Candidate C rev008 - Rec.709"
+ file /Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/SDR_1.png
+ colorspace "Utility - sRGB - Texture"
  raw true
  file_type png
- datatype "16 bit"
  checkHashOnRead false
- version 45
- afterFrameRender "\nimport sys\nfrom subprocess import Popen\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  -l --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\nproc = Popen(\[commandString], shell=True,\n             stdin=None, stdout=None, stderr=None, close_fds=True)\n"
- name Write8
- xpos -2858
- ypos 777
- addUserKnob {20 User}
- addUserKnob {2 destinationPath}
- destinationPath "/Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/\[python nuke.thisNode().knob('file').evaluate().split('/').pop(-1).replace('.png','.avif')]"
- addUserKnob {3 cicp_P}
- cicp_P 9
- addUserKnob {3 cicp_T}
- cicp_T 16
- addUserKnob {3 cicp_M}
- cicp_M 9
- addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
-}
-push $N47eff400
-Multiply {
- value 100
- name Multiply5
- xpos -2978
- ypos 650
-}
-Colorspace {
- primary_in Rec.2020
- colorspace_out st2084
- primary_out Rec.2020
- name Colorspace26
- xpos -2978
- ypos 682
-}
-Reformat {
- type "to box"
- box_width 1024
- name Reformat5
- xpos -2978
- ypos 706
-}
-Write {
- file /tmp/PQ_10_to_1000nits.png
- colorspace "Candidate C rev008 - Rec.709"
- raw true
- file_type png
- datatype "16 bit"
- checkHashOnRead false
- version 44
- afterFrameRender "\nimport sys\nfrom subprocess import Popen\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  -l --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\nproc = Popen(\[commandString], shell=True,\n             stdin=None, stdout=None, stderr=None, close_fds=True)\n"
- name Write7
- selected true
- xpos -2978
- ypos 774
- addUserKnob {20 User}
- addUserKnob {2 destinationPath}
- destinationPath "/Users/afry/GitHub/ACES_ODT_Candidates_Examples/imagesDiagnostic/\[python nuke.thisNode().knob('file').evaluate().split('/').pop(-1).replace('.png','.avif')]"
- addUserKnob {3 cicp_P}
- cicp_P 9
- addUserKnob {3 cicp_T}
- cicp_T 16
- addUserKnob {3 cicp_M}
- cicp_M 9
- addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
+ version 8
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ name Write6
+ xpos -1997
+ ypos 737
 }
