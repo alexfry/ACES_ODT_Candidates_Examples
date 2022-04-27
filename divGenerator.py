@@ -138,7 +138,7 @@ footTemplate = '''    </div>
 
 
 
-rev = '009'
+rev = '008'
 
 ## get list of image names from image directory
 import os
