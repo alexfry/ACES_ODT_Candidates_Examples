@@ -41,7 +41,7 @@ headTemplate = '''
 
         .grid-container {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: COLUMN_BLOCK;
         grid-gap: 10px;
         }
     #juxtapose-wrapper {
@@ -59,22 +59,70 @@ headTemplate = '''
 '''
 
 
-divTemplate1 = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateSDRvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
+            <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
         </div>
         <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
-divTemplate2 = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateZvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
+        </div>'''
+
+divTemplateZvsSDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="A - SDR"  />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="B - SDR"  />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
+            <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="C - SDR"  />
+        </div>'''
+
+divTemplateAvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
         </div>
         <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
+        </div>'''
+
+divTemplateBvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
+            <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
+            <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
+        </div>'''
+
+divTemplateAvsB = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
+            <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+            <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
+            <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
         </div>'''
 
 
@@ -106,34 +154,111 @@ frameNumbers = [x for x in frameNumbers if x != '']
 for frame in frameNumbers:
     print(frame)
 
-### Write out HDR vs SDR
+############################################
+
+### Write out SDR vs HDR
 newDivs = []
 description = 'ACES 2.0 OT Candidates revRRR - SDR vs HDR'.replace('RRR', rev)
 for frame in frameNumbers:
     # print(str(i).zfill(4))
-    newDivs.append(divTemplate1.replace('XXXX', frame).replace('RRR', rev))
+    newDivs.append(divTemplateSDRvsHDR.replace('XXXX', frame).replace('RRR', rev))
 
 # for div in newDivs:
 #     print(div)
 
 #write to html file on disk
 with open('sdrVsHdr.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description))
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
     f.write('\n'.join(newDivs))
     f.write(footTemplate)
+
+############################################
+
+### Write out Matrix + EOTF vs HDR
+newDivs = []
+description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs HDR'.replace('RRR', rev)
+for frame in frameNumbers:
+    # print(str(i).zfill(4))
+    newDivs.append(divTemplateZvsHDR.replace('XXXX', frame).replace('RRR', rev))
+
+# for div in newDivs:
+#     print(div)
+
+#write to html file on disk
+with open('MatrixEOTFvsHDR.html', 'w') as f:
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
+    f.write('\n'.join(newDivs))
+    f.write(footTemplate)
+
+############################################
+
+### Write out Matrix + EOTF vs SDR
+newDivs = []
+description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs SDR'.replace('RRR', rev)
+for frame in frameNumbers:
+    # print(str(i).zfill(4))
+    newDivs.append(divTemplateZvsSDR.replace('XXXX', frame).replace('RRR', rev))
+
+# for div in newDivs:
+#     print(div)
+
+#write to html file on disk
+with open('MatrixEOTFvsSDR.html', 'w') as f:
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
+    f.write('\n'.join(newDivs))
+    f.write(footTemplate)
+
+
+############################################
 
 ### Write out A vs C
 newDivs = []
 description = 'ACES 2.0 OT Candidates revRRR - A vs C'.replace('RRR', rev)
 for frame in frameNumbers:
     # print(str(i).zfill(4))
-    newDivs.append(divTemplate2.replace('XXXX', frame).replace('RRR', rev))
+    newDivs.append(divTemplateAvsC.replace('XXXX', frame).replace('RRR', rev))
 
 for div in newDivs:
     print(div)
 
 #write to html file on disk
 with open('AvsC.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description))
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+    f.write('\n'.join(newDivs))
+    f.write(footTemplate)
+
+############################################
+
+### Write out A vs B
+newDivs = []
+description = 'ACES 2.0 OT Candidates revRRR - A vs B'.replace('RRR', rev)
+for frame in frameNumbers:
+    # print(str(i).zfill(4))
+    newDivs.append(divTemplateAvsB.replace('XXXX', frame).replace('RRR', rev))
+
+for div in newDivs:
+    print(div)
+
+#write to html file on disk
+with open('AvsB.html', 'w') as f:
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+    f.write('\n'.join(newDivs))
+    f.write(footTemplate)
+
+############################################
+
+### Write out B vs C
+newDivs = []
+description = 'ACES 2.0 OT Candidates revRRR - B vs C'.replace('RRR', rev)
+for frame in frameNumbers:
+    # print(str(i).zfill(4))
+    newDivs.append(divTemplateBvsC.replace('XXXX', frame).replace('RRR', rev))
+
+for div in newDivs:
+    print(div)
+
+#write to html file on disk
+with open('BvsC.html', 'w') as f:
+    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
     f.write('\n'.join(newDivs))
     f.write(footTemplate)
