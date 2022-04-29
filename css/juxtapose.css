@@ -49,12 +49,12 @@ div.jx-control {
 	height: 100%;
 	margin-right: auto;
 	margin-left: auto;
-	width: 3px;
-	background-color: currentColor;
+	width: 1px;
+	background-color: rgba(255, 255, 255, .2);
 }
 
 .vertical div.jx-control {
-	height: 3px;
+	height: 1px;
 	width: 100%;
 	background-color: currentColor;
 	position: relative;
@@ -68,9 +68,9 @@ div.jx-controller {
 	top: 0;
 	bottom: 0;
 	height: 60px;
-	width: 9px;
-	margin-left: -3px;
-	background-color: currentColor;
+	width: 3px;
+	margin-left: -1px;
+	background-color: rgba(255, 255, 255, 1);
 }
 
 .vertical div.jx-controller {
@@ -107,14 +107,14 @@ div.jx-arrow.jx-left {
 	left: 2px;
 	border-style: solid;
 	border-width: 8px 8px 8px 0;
-	border-color: transparent currentColor transparent transparent;
+	border-color: transparent rgba(255, 255, 255, .2) transparent transparent;
 }
 
 div.jx-arrow.jx-right {
 	right: 2px;
 	border-style: solid;
 	border-width: 8px 0 8px 8px;
-	border-color: transparent transparent transparent currentColor;
+	border-color: transparent transparent transparent rgba(255, 255, 255, .2);
 }
 
 .vertical div.jx-arrow.jx-left {
@@ -122,7 +122,7 @@ div.jx-arrow.jx-right {
 	top: 2px;
 	border-style: solid;
 	border-width: 0px 8px 8px 8px;
-	border-color: transparent transparent currentColor transparent;
+	border-color: transparent transparent rgba(255, 255, 255, .2) transparent;
 }
 
 .vertical div.jx-arrow.jx-right {
@@ -131,7 +131,7 @@ div.jx-arrow.jx-right {
 	bottom: 2px;
 	border-style: solid;
 	border-width: 8px 8px 0 8px;
-	border-color: currentColor transparent transparent transparent;
+	border-color: rgba(255, 255, 255, .2) transparent transparent transparent;
 }
 
 div.jx-handle:hover div.jx-arrow.jx-left,

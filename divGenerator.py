@@ -12,8 +12,6 @@ headTemplate = '''
             text-align: center;
         }
     </style>
-    <link rel="stylesheet" type="text/css"
-        href="https://rawgit.com/NUKnightLab/juxtapose/1.1.3/juxtapose/css/juxtapose.css" />
 </head>
 
 <body>
@@ -59,68 +57,68 @@ headTemplate = '''
 '''
 
 
-divTemplateSDRvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateSDRvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
             <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
-divTemplateZvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateZvsHDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
-divTemplateZvsSDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateZvsSDR = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="A - SDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="B - SDR"  />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate Z revRRR - Rec.2100.XXXX.avif"    loading="lazy" data-label="Matrix + EOTF" />
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"  loading="lazy" data-label="C - SDR"  />
         </div>'''
 
-divTemplateAvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateAvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
-divTemplateBvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateBvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
             <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
             <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
-divTemplateAvsB = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+divTemplateAvsB = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate A revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="A - SDR" />
             <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
         </div>
-        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
             <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
             <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
         </div>'''
