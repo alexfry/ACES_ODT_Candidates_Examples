@@ -22,7 +22,7 @@ headTemplate = '''
             display: none;
         }
         a.jx-knightlab span.juxtapose-name {
-            visibility: hidden;
+            /* visibility: hidden; */
             display: none;
         }
         div.jx-slider {
@@ -119,8 +119,17 @@ divTemplateAvsB = '''        <div class="juxtapose" data-startingposition="50%" 
             <img src="images/ACES_ODT_Candidate B revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="B - SDR" />
         </div>
         <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
-            <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
+            <img src="images/ACES_ODT_Candidate A revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="A - HDR"  />
             <img src="images/ACES_ODT_Candidate B revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="B - HDR"  />
+        </div>'''
+
+divTemplateYvsC = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
+            <img src="images/ACES_ODT_Candidate Y revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="ACES 1.3 - SDR" />
+            <img src="images/ACES_ODT_Candidate C revRRR - SDRsim.XXXX.avif"    loading="lazy" data-label="C - SDR" />
+        </div>
+        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
+            <img src="images/ACES_ODT_Candidate Y revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="ACES 1.3 - HDR"  />
+            <img src="images/ACES_ODT_Candidate C revRRR - Rec.2100.XXXX.avif"  loading="lazy" data-label="C - HDR"  />
         </div>'''
 
 
@@ -130,6 +139,8 @@ footTemplate = '''    </div>
     </script>
     <link rel="stylesheet"
         href="css/juxtapose.css">
+    <link rel="stylesheet" type="text/css"
+        href="css/styles.css">
 </body>
 
 </html>'''
@@ -154,109 +165,257 @@ for frame in frameNumbers:
 
 ############################################
 
-### Write out SDR vs HDR
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - SDR vs HDR'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateSDRvsHDR.replace('XXXX', frame).replace('RRR', rev))
+# ### Write out SDR vs HDR
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - SDR vs HDR'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateSDRvsHDR.replace('XXXX', frame).replace('RRR', rev))
+
+# # for div in newDivs:
+# #     print(div)
+
+# #write to html file on disk
+# with open('sdrVsHdr.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
+
+# ############################################
+
+# ### Write out Matrix + EOTF vs HDR
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs HDR'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateZvsHDR.replace('XXXX', frame).replace('RRR', rev))
+
+# # for div in newDivs:
+# #     print(div)
+
+# #write to html file on disk
+# with open('MatrixEOTFvsHDR.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
+
+# ############################################
+
+# ### Write out Matrix + EOTF vs SDR
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs SDR'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateZvsSDR.replace('XXXX', frame).replace('RRR', rev))
+
+# # for div in newDivs:
+# #     print(div)
+
+# #write to html file on disk
+# with open('MatrixEOTFvsSDR.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
+
+
+# ############################################
+
+# ### Write out A vs C
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - A vs C'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateAvsC.replace('XXXX', frame).replace('RRR', rev))
 
 # for div in newDivs:
 #     print(div)
 
-#write to html file on disk
-with open('sdrVsHdr.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
+# #write to html file on disk
+# with open('AvsC.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
 
-############################################
+# ############################################
 
-### Write out Matrix + EOTF vs HDR
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs HDR'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateZvsHDR.replace('XXXX', frame).replace('RRR', rev))
-
-# for div in newDivs:
-#     print(div)
-
-#write to html file on disk
-with open('MatrixEOTFvsHDR.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
-
-############################################
-
-### Write out Matrix + EOTF vs SDR
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs SDR'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateZvsSDR.replace('XXXX', frame).replace('RRR', rev))
+# ### Write out A vs B
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - A vs B'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateAvsB.replace('XXXX', frame).replace('RRR', rev))
 
 # for div in newDivs:
 #     print(div)
 
-#write to html file on disk
-with open('MatrixEOTFvsSDR.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','33% 33% 33%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
+# #write to html file on disk
+# with open('AvsB.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
+
+# ############################################
+
+# ### Write out B vs C
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - B vs C'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateBvsC.replace('XXXX', frame).replace('RRR', rev))
+
+# for div in newDivs:
+#     print(div)
+
+# #write to html file on disk
+# with open('BvsC.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
+
+# ############################################
+
+# ### Write out Y vs C
+# newDivs = []
+# description = 'ACES 2.0 OT Candidates revRRR - 1.2 vs C'.replace('RRR', rev)
+# for frame in frameNumbers:
+#     # print(str(i).zfill(4))
+#     newDivs.append(divTemplateYvsC.replace('XXXX', frame).replace('RRR', rev))
+
+# for div in newDivs:
+#     print(div)
+
+# #write to html file on disk
+# with open('YvsC.html', 'w') as f:
+#     f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
+#     f.write('\n'.join(newDivs))
+#     f.write(footTemplate)
 
 
-############################################
 
-### Write out A vs C
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - A vs C'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateAvsC.replace('XXXX', frame).replace('RRR', rev))
+def writeComparisonPage(pagename,description,columns,comparisons):
+    divTemplateSingle = '''        <div class="juxtapose" data-startingposition="50%" data-showlabels="true"style="margin: 0 auto">
+            <img src="images/ACES_ODT_Candidate CAND_L revRRR - TYPE_L.XXXX.avif"    loading="lazy" data-label="LABEL_L" />
+            <img src="images/ACES_ODT_Candidate CAND_R revRRR - TYPE_R.XXXX.avif"    loading="lazy" data-label="LABEL_R" />
+        </div>
+  '''
+    newDivs = []
+    description = description.replace('RRR', rev)
+    for frame in frameNumbers:
+        # print(str(i).zfill(4))
+        for i,comparison in enumerate(comparisons):
+            print(comparison)
+            newDiv = divTemplateSingle.replace('RRR', rev)
+            newDiv = newDiv.replace('CAND_L',comparisons[i][0][0])
+            newDiv = newDiv.replace('CAND_R',comparisons[i][1][0])
+            newDiv = newDiv.replace('TYPE_L',comparisons[i][0][1])
+            newDiv = newDiv.replace('TYPE_R',comparisons[i][1][1])
+            newDiv = newDiv.replace('XXXX',frame)
+            newDiv = newDiv.replace('LABEL_L',comparisons[i][0][2])
+            newDiv = newDiv.replace('LABEL_R',comparisons[i][1][2])
+            # print(newDiv)
+            newDivs.append(newDiv)
 
-for div in newDivs:
-    print(div)
+    for div in newDivs:
+        print(div)
 
-#write to html file on disk
-with open('AvsC.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
+    #write to html file on disk
+    with open(pagename, 'w') as f:
+        f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK',columns))
+        f.write('\n'.join(newDivs))
+        f.write(footTemplate)
 
-############################################
+# writeComparisonPage(pagename,description,columns,comparisons)
 
-### Write out A vs B
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - A vs B'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateAvsB.replace('XXXX', frame).replace('RRR', rev))
 
-for div in newDivs:
-    print(div)
 
-#write to html file on disk
-with open('AvsB.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
+writeComparisonPage(\
+pagename = 'CurrentvsA.html',\
+description = 'ACES 2.0 OT Candidates revRRR - 1.3 vs A'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['Y','SDRsim','ACES 1.3 SDR'],['A','SDRsim','A SDR']],[['Y','Rec.2100','ACES 1.3 HDR'],['A','Rec.2100','A HDR']]],\
+)
 
-############################################
+writeComparisonPage(\
+pagename = 'CurrentvsB.html',\
+description = 'ACES 2.0 OT Candidates revRRR - 1.3 vs B'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['Y','SDRsim','ACES 1.3 SDR'],['B','SDRsim','B SDR']],[['Y','Rec.2100','ACES 1.3 HDR'],['B','Rec.2100','B HDR']]],\
+)
 
-### Write out B vs C
-newDivs = []
-description = 'ACES 2.0 OT Candidates revRRR - B vs C'.replace('RRR', rev)
-for frame in frameNumbers:
-    # print(str(i).zfill(4))
-    newDivs.append(divTemplateBvsC.replace('XXXX', frame).replace('RRR', rev))
+writeComparisonPage(\
+pagename = 'CurrentvsC.html',\
+description = 'ACES 2.0 OT Candidates revRRR - 1.3 vs C'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['Y','SDRsim','ACES 1.3 SDR'],['C','SDRsim','C SDR']],[['Y','Rec.2100','ACES 1.3 HDR'],['C','Rec.2100','C HDR']]],\
+)
 
-for div in newDivs:
-    print(div)
+writeComparisonPage(\
+pagename = 'AvsB.html',\
+description = 'ACES 2.0 OT Candidates revRRR - A vs B'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['A','SDRsim','A SDR'],['B','SDRsim','B SDR']],[['A','Rec.2100','A HDR'],['B','Rec.2100','B HDR']]],\
+)
 
-#write to html file on disk
-with open('BvsC.html', 'w') as f:
-    f.write(headTemplate.replace('HEADINGBLOCK', description).replace('COLUMN_BLOCK','50% 50%'))
-    f.write('\n'.join(newDivs))
-    f.write(footTemplate)
+writeComparisonPage(\
+pagename = 'AvsC.html',\
+description = 'ACES 2.0 OT Candidates revRRR - A vs C'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['A','SDRsim','A SDR'],['C','SDRsim','C SDR']],[['A','Rec.2100','A HDR'],['C','Rec.2100','C HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'BvsC.html',\
+description = 'ACES 2.0 OT Candidates revRRR - B vs C'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['B','SDRsim','B SDR'],['C','SDRsim','C SDR']],[['B','Rec.2100','B HDR'],['C','Rec.2100','C HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'A.html',\
+description = 'ACES 2.0 OT Candidates revRRR - A'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['A','SDRsim','A SDR'],['A','Rec.2100','A HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'B.html',\
+description = 'ACES 2.0 OT Candidates revRRR - B'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['B','SDRsim','B SDR'],['B','Rec.2100','B HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'C.html',\
+description = 'ACES 2.0 OT Candidates revRRR - C'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['C','SDRsim','C SDR'],['C','Rec.2100','C HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'Y.html',\
+description = 'ACES 2.0 OT Candidates revRRR - ACES 1.3'.replace('RRR', rev),\
+columns = '50% 50%',\
+comparisons = [[['Y','SDRsim','ACES 1.3 SDR'],['Y','Rec.2100','ACES 1.3 HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'MatrixEOTFvsHDR.html',\
+description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs HDR'.replace('RRR', rev),\
+columns = '33% 33% 33%',\
+comparisons = [[['Z','Rec.2100','Matrix + EOTF'],['A','Rec.2100','A HDR']],[['Z','Rec.2100','Matrix + EOTF'],['B','Rec.2100','B HDR']],[['Z','Rec.2100','Matrix + EOTF'],['C','Rec.2100','C HDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'MatrixEOTFvsSDR.html',\
+description = 'ACES 2.0 OT Candidates revRRR - Matrix + EOTF vs SDR'.replace('RRR', rev),\
+columns = '33% 33% 33%',\
+comparisons = [[['Z','Rec.2100','Matrix + EOTF'],['A','SDRsim','A SDR']],[['Z','Rec.2100','Matrix + EOTF'],['B','SDRsim','B SDR']],[['Z','Rec.2100','Matrix + EOTF'],['C','SDRsim','C SDR']]],\
+)
+
+writeComparisonPage(\
+pagename = 'sdrVsHdr.html',\
+description = 'ACES 2.0 OT Candidates revRRR - SDR vs HDR'.replace('RRR', rev),\
+columns = '33% 33% 33%',\
+comparisons = [[['A','SDRsim','A SDR'],['A','Rec.2100','A HDR']],[['B','SDRsim','B SDR'],['B','Rec.2100','B HDR']],[['C','SDRsim','C SDR'],['C','Rec.2100','C HDR']]],\
+)
+
