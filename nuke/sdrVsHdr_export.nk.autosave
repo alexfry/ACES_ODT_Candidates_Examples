@@ -2,19 +2,19 @@
 version 13.0 v3
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="25" w="3008" h="1562" maximized="1" screen="0">
+    <window x="0" y="25" w="2048" h="1150" maximized="1" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="1984" stretch="1"/>
+            <split size="1024" stretch="1"/>
             <splitter orientation="2">
-                <split size="905"/>
+                <split size="663"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="637"/>
+                <split size="467"/>
                 <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
@@ -22,7 +22,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
                 </dock>
             </splitter>
             <split size="976"/>
-            <dock id="" activePageId="uk.co.thefoundry.backgroundrenderview.1">
+            <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
                 <page id="uk.co.thefoundry.backgroundrenderview.1"/>
             </dock>
@@ -73664,5 +73664,4 @@ Write {
  cicp_T 16
  addUserKnob {3 cicp_M}
  cicp_M 9
- addUserKnob {22 encodeAvif T "\nimport sys\n\nnode = nuke.thisNode()\nsourcePath = node.knob('file').evaluate()\ndestinationPath  = node.knob('destinationPath').evaluate()\ncicp_P = str(int(node.knob('cicp_P').value()))\ncicp_T = str(int(node.knob('cicp_T').value()))\ncicp_M = str(int(node.knob('cicp_M').value()))\ncicp_string = '/'.join(\[cicp_P,cicp_T,cicp_M])\n\ncommandString = '/usr/local/bin/avifenc  --cicp %s  \\\"%s\\\"  \\\"%s\\\"' % (cicp_string,sourcePath,destinationPath)\nprint(commandString)\nos.system(commandString)\n\n" +STARTLINE}
 }
